@@ -83,16 +83,16 @@ SELECT * FROM film ORDER B film_id ASC;
 SELECT inventory_id FROM inventory i LEFT OUTER JOIN rental r USING(inventory_id) WHERE r.rental_id IS NULL LIMIT 1;
 INSERT INTO rental (rental_date,inventory_id,customer_id,staff_id) VALUES (
 	NOW(), 
-	(4587), 
+	(1), 
     (SELECT customer_id FROM customer LIMIT 1), 
     (SELECT staff_id FROM staff LIMIT 1));
     
 INSERT INTO payment (customer_id, staff_id, rental_id, amount, payment_date)
 VALUES (
-    (SELECT customer_id FROM rental WHERE inventory_id = 4587 LIMIT 1),
-    (SELECT staff_id FROM rental WHERE inventory_id = 4587 LIMIT 1),   
-    (SELECT max(rental_id) FROM rental WHERE inventory_id = 4587),  
-    466.43, 
+    (SELECT customer_id FROM rental WHERE inventory_id = 1 LIMIT 1),
+    (SELECT staff_id FROM rental WHERE inventory_id = 1 LIMIT 1),   
+    (SELECT max(rental_id) FROM rental WHERE inventory_id = 1),  
+    416.23, 
     NOW() 
 );
 
